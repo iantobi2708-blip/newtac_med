@@ -1,0 +1,366 @@
+:root {
+  --bg-main: #1c1f1a;       /* Fondo militar oscuro */
+  --bg-panel: #242821;      /* Paneles */
+  --bg-input: #121410;      /* Inputs */
+  --text-main: #c8d1c0;     /* Texto claro verdoso */
+  --text-muted: #727a6b;    /* Texto secundario */
+  --border: #3a4234;        /* Bordes */
+  --accent: #5d7a43;        /* Verde olivo táctico */
+  --accent-hover: #728f57;
+  
+  /* Alertas de estado */
+  --rojo: #d9381e;          /* Rojo táctico */
+  --naranja: #e87a1a;       /* Naranja */
+  --amarillo: #f5c211;      /* Amarillo */
+  --verde: #4da64d;         /* Verde seguro */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace; /* Fuente tipo código militar */
+  text-transform: uppercase; /* Casi todo en mayúsculas */
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* Encabezado */
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background-color: var(--bg-panel);
+  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.logo-app {
+  width: 45px;
+  height: 45px;
+  border-radius: 0; /* Bordes rectos */
+  border: 2px solid var(--accent);
+  padding: 2px;
+  filter: grayscale(0.5) sepia(0.3) hue-rotate(50deg); /* Filtro táctico al icono */
+}
+
+.textos-header h1 {
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.textos-header h1 span {
+  font-size: 0.8rem;
+  background: var(--accent);
+  color: #000;
+  padding: 2px 6px;
+  font-weight: bold;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.textos-header p {
+  font-size: 0.75rem;
+  margin: 4px 0 0 0;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* Aviso */
+.aviso {
+  background-color: #2b1d12;
+  color: var(--naranja);
+  border-left: 4px solid var(--naranja);
+  padding: 10px 15px;
+  margin: 15px 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* Formulario */
+main {
+  padding: 0 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  background: var(--bg-panel);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.campo span {
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  background: var(--bg-input);
+  transition: border-color 0.2s;
+  text-align: center;
+}
+
+input::placeholder {
+  color: #3a4234;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: inset 0 0 5px rgba(93, 122, 67, 0.5);
+}
+
+input.invalido {
+  border-color: var(--rojo);
+  background: #2b1212;
+}
+
+.error {
+  color: var(--rojo);
+  font-size: 0.7rem;
+  margin-top: 4px;
+  min-height: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Botones Segmentados */
+fieldset {
+  border: none;
+  margin-bottom: 15px;
+}
+
+legend {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.segmentos {
+  display: flex;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+}
+
+.segmentos button {
+  flex: 1;
+  padding: 12px 5px;
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.segmentos button:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+
+.segmentos button.activo {
+  background: var(--accent);
+  color: #000;
+}
+
+.ayuda {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Checkbox */
+.casilla {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.casilla input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  cursor: pointer;
+  position: relative;
+}
+
+.casilla input:checked {
+  background: var(--accent);
+}
+
+.casilla input:checked::after {
+  content: 'X';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Botón Principal */
+.boton-principal {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  background-color: var(--accent);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.2s;
+}
+
+.boton-principal:hover, .boton-principal:active {
+  background-color: var(--accent-hover);
+}
+
+/* Resultados */
+.resultado {
+  margin-top: 25px;
+  background: var(--bg-panel);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--border);
+  display: none;
+}
+
+.resultado:not(.oculto) {
+  display: block;
+  animation: flash 0.4s ease-out;
+}
+
+@keyframes flash {
+  0% { opacity: 0; background: #fff; }
+  100% { opacity: 1; background: var(--bg-panel); }
+}
+
+/* Semáforo Táctico */
+.resultado.nivel-cero, .resultado.nivel-bajo { border-top-color: var(--verde); }
+.resultado.nivel-bajo-medio { border-top-color: var(--amarillo); }
+.resultado.nivel-medio { border-top-color: var(--naranja); }
+.resultado.nivel-alto { border-top-color: var(--rojo); }
+
+.resultado.nivel-alto h2, .resultado.nivel-alto .puntaje span { color: var(--rojo); }
+.resultado.nivel-medio h2, .resultado.nivel-medio .puntaje span { color: var(--naranja); }
+.resultado.nivel-bajo-medio h2, .resultado.nivel-bajo-medio .puntaje span { color: var(--amarillo); }
+.resultado.nivel-bajo h2, .resultado.nivel-cero h2, .resultado.nivel-bajo .puntaje span, .resultado.nivel-cero .puntaje span { color: var(--verde); }
+
+.puntaje { margin-bottom: 10px; }
+.puntaje span { font-size: 4rem; font-weight: bold; line-height: 1; }
+.puntaje small { font-size: 0.9rem; color: var(--text-muted); display: block; letter-spacing: 2px;}
+
+.resultado h2 { font-size: 1.3rem; margin-bottom: 10px; letter-spacing: 1px; }
+.resultado p { font-size: 0.85rem; margin-bottom: 20px; color: var(--text-main); }
+
+.detalle { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.8rem; }
+.detalle td { padding: 8px; border-bottom: 1px dashed var(--border); text-align: left; }
+.detalle td:last-child { text-align: right; font-weight: bold; }
+.detalle tr.tres td { color: var(--rojo); background: rgba(217, 56, 30, 0.1); }
+
+.boton-secundario {
+  background: var(--bg-input);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boton-secundario:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Historial */
+.historial {
+  margin-top: 25px;
+  background: var(--bg-panel);
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.historial h2 { font-size: 0.9rem; margin-bottom: 15px; color: var(--text-muted); letter-spacing: 1px; }
+
+#lista-historial { list-style: none; margin-bottom: 15px; }
+#lista-historial li {
+  padding: 10px;
+  border-left: 4px solid var(--border);
+  background: var(--bg-input);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+#lista-historial li strong { font-size: 1.2rem; }
+#lista-historial li.vacio { border-left: none; text-align: center; color: var(--text-muted); background: transparent; padding: 20px; }
+
+.boton-texto {
+  background: transparent;
+  color: var(--rojo);
+  border: none;
+  font-size: 0.75rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 30px;
+  padding: 0 20px;
+  letter-spacing: 1px;
+}

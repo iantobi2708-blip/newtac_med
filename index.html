@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  
+  <title>TAC-MED Sentinel | NEWS2</title>
+  <meta name="description" content="Sistema táctico de alerta temprana y triaje NEWS2.">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1c1f1a">
+  <link rel="icon" href="icons/icon-192.png">
+
+  <!-- iPhone -->
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="TAC-MED">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="barra">
+    <img src="icons/icon-192.png" alt="TAC-MED Logo" class="logo-app">
+    <div class="textos-header">
+      <h1>TAC-MED <span>SENTINEL</span></h1>
+      <p>PROTOCOLO NEWS2 // TRIAGE TÁCTICO</p>
+    </div>
+  </header>
+
+  <div class="aviso">
+    <strong>⚠ RESTRICTED:</strong> Sistema de simulación táctica y entrenamiento. No usar en operaciones reales ni en sustitución del juicio médico.
+  </div>
+
+  <main>
+    <form id="formulario" novalidate>
+      
+      <label class="campo">
+        <span>[ ID UNIDAD / CAMA ]</span>
+        <input id="cama" type="text" maxlength="12" placeholder="ALPHA-1" autocomplete="off">
+      </label>
+
+      <div class="rejilla">
+        <label class="campo">
+          <span>[ FR ] RESP</span>
+          <input id="fr" type="number" inputmode="numeric" placeholder="16" required>
+          <em class="error" data-para="fr"></em>
+        </label>
+
+        <label class="campo">
+          <span>[ SPO2 ] %</span>
+          <input id="spo2" type="number" inputmode="numeric" placeholder="97" required>
+          <em class="error" data-para="spo2"></em>
+        </label>
+
+        <label class="campo">
+          <span>[ TAS ] mmHg</span>
+          <input id="tas" type="number" inputmode="numeric" placeholder="120" required>
+          <em class="error" data-para="tas"></em>
+        </label>
+
+        <label class="campo">
+          <span>[ FC ] LPM</span>
+          <input id="fc" type="number" inputmode="numeric" placeholder="80" required>
+          <em class="error" data-para="fc"></em>
+        </label>
+
+        <label class="campo">
+          <span>[ TEMP ] °C</span>
+          <input id="temp" type="number" inputmode="decimal" step="0.1" placeholder="36.8" required>
+          <em class="error" data-para="temp"></em>
+        </label>
+      </div>
+
+      <fieldset class="campo">
+        <legend>[ SOPORTE RESPIRATORIO ]</legend>
+        <div class="segmentos" data-grupo="oxigeno">
+          <button type="button" data-valor="no" class="activo">AMBIENTE</button>
+          <button type="button" data-valor="si">OXÍGENO</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="campo">
+        <legend>[ ESTADO NEUROLÓGICO - ACVPU ]</legend>
+        <div class="segmentos" data-grupo="conciencia">
+          <button type="button" data-valor="A" class="activo" title="Alerta">A</button>
+          <button type="button" data-valor="C" title="Confusión nueva">C</button>
+          <button type="button" data-valor="V" title="Responde a la voz">V</button>
+          <button type="button" data-valor="P" title="Responde al dolor">P</button>
+          <button type="button" data-valor="U" title="No responde">U</button>
+        </div>
+        <small class="ayuda">A=ALERTA · C=CONFUSIÓN · V=VOZ · P=DOLOR · U=NO RESPONDE</small>
+      </fieldset>
+
+      <label class="casilla">
+        <input id="escala2" type="checkbox">
+        <span>PROTOCOLO ESCALA 2 (EPOC / HIPERCAPNIA)</span>
+      </label>
+
+      <button type="submit" class="boton-principal">▶ EJECUTAR TRIAGE</button>
+    </form>
+
+    <section id="resultado" class="resultado oculto" aria-live="polite">
+      <div class="puntaje">
+        <span id="total">0</span>
+        <small>PUNTOS</small>
+      </div>
+      <h2 id="etiqueta">NIVEL DE AMENAZA</h2>
+      <p id="respuesta">Directiva táctica.</p>
+      
+      <table class="detalle">
+        <tbody id="detalle"></tbody>
+      </table>
+      
+      <button type="button" id="guardar" class="boton-secundario">[ LOG ] GUARDAR REGISTRO</button>
+    </section>
+
+    <section class="historial">
+      <h2>REGISTRO DE CAMPO (LOCAL)</h2>
+      <ul id="lista-historial">
+        <li class="vacio">NO HAY DATOS.</li>
+      </ul>
+      <button type="button" id="borrar" class="boton-texto">[ PURGAR LOG ]</button>
+    </section>
+  </main>
+
+  <footer>
+    OPERADO POR: UNIDAD TÁCTICA MÉDICA<br>
+    REF: ROYAL COLLEGE OF PHYSICIANS (2017)<br>
+    <span style="opacity: 0.5; font-size: 0.7rem;">SYS.VER: 2.0.26</span>
+  </footer>
+
+  <script src="news2.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

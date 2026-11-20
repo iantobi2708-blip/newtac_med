@@ -1,0 +1,30 @@
+{
+  "name": "TAC-MED Sentinel - Triaje Táctico",
+  "short_name": "TAC-MED",
+  "description": "Sistema táctico de alerta temprana y triaje NEWS2",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1c1f1a",
+  "theme_color": "#1c1f1a",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
